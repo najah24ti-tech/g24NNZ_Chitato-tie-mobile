@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NNZ_Chitato</string>
+    <string name="btn_my_project">My Project</string>
+    <string name="snack_title">Chitato Rasa Sapi Panggang</string>
+    <string name="snack_description">Keripik kentang tebal berbentuk gelombang dengan rasa gurih daging sapi panggang yang lezat.</string>
+    <string name="snack_nutrition">Komposisi Gizi (per 30g):\n- Energi Total: 160 kcal\n- Lemak Total: 9 g\n- Protein: 2 g\n- Karbohidrat Total: 17 g\n- Garam (Natrium): 140 mg</string>
+</resources>
