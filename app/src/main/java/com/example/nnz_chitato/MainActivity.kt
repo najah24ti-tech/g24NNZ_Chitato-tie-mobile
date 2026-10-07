@@ -6,13 +6,26 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
+        // Tombol menuju halaman detail Chitato
         val btnMyProject = findViewById<Button>(R.id.btnMyProject)
+
         btnMyProject.setOnClickListener {
             val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        // Tombol menuju halaman website Chitato
+        val btnWebsite = findViewById<Button>(R.id.btnWebsite)
+
+        btnWebsite.setOnClickListener {
+            val intent = Intent(this, ChitatoWebActivity::class.java)
             startActivity(intent)
         }
     }

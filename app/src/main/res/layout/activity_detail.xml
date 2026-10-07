@@ -1,47 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
 
-    <LinearLayout
+    android:orientation="vertical"
+    android:background="@color/bg_light">
+
+
+    <!-- TOOLBAR -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarDetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
 
-        <ImageView
-            android:id="@+id/imgSnack"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:contentDescription="@string/snack_title"
-            android:src="@drawable/img_chitato" />
+        android:background="@color/chitato_red"
+        android:elevation="4dp"
 
-        <TextView
-            android:id="@+id/tvSnackTitle"
+        app:title="Detail Chitato"
+        app:titleTextColor="@color/text_white" />
+
+
+    <!-- ISI -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="@string/snack_title"
-            android:textSize="22sp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvSnackDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/snack_description"
-            android:textSize="14sp" />
+            android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tvSnackNutrition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/snack_nutrition"
-            android:textSize="14sp" />
 
-    </LinearLayout>
-</ScrollView>
+            <!-- CARD PRODUK -->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="@color/card_bg"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:padding="20dp">
+
+
+                    <!-- GAMBAR CHITATO -->
+
+                    <ImageView
+                        android:id="@+id/imgSnack"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+
+                        android:src="@drawable/img_chitato"
+                        android:contentDescription="@string/snack_title"
+                        android:scaleType="centerInside"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <!-- NAMA PRODUK -->
+
+                    <TextView
+                        android:id="@+id/tvSnackTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:text="@string/snack_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="23sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+
+                        android:layout_marginTop="12dp"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/imgSnack" />
+
+
+                    <!-- DESKRIPSI -->
+
+                    <TextView
+                        android:id="@+id/tvSnackDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:text="@string/snack_description"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif"
+
+                        android:layout_marginTop="12dp"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvSnackTitle" />
+
+
+                    <!-- JUDUL INFORMASI GIZI -->
+
+                    <TextView
+                        android:id="@+id/tvNutritionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Informasi Gizi"
+                        android:textColor="@color/chitato_red"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
+
+                        android:layout_marginTop="20dp"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvSnackDesc" />
+
+
+                    <!-- INFORMASI GIZI -->
+
+                    <TextView
+                        android:id="@+id/tvSnackNutrition"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:text="@string/snack_nutrition"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif"
+
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvNutritionTitle"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>
