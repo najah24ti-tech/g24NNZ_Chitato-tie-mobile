@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Aplikasi Chitato -->
     <string name="app_name">Chitato</string>
 
     <string name="btn_my_project">DETAIL CHITATO</string>
@@ -20,5 +22,14 @@
         Karbohidrat : 13 g
         Natrium : 120 mg
     </string>
+
+    <!-- Halaman Login HebePku -->
+    <string name="login_logo_description">Logo HebePku</string>
+    <string name="login_title">HebePku Mobile</string>
+    <string name="login_subtitle">Sales Management</string>
+    <string name="login_username_hint">Email or Username</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_forgot_password">Forgot Password?</string>
 
 </resources>

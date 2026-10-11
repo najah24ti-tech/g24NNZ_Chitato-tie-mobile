@@ -1,5 +1,6 @@
 package com.example.nnz_chitato
 
+import android.graphics.Color
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -12,6 +13,9 @@ class ChitatoWebActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Warna status bar Chitato
+        window.statusBarColor = Color.rgb(183, 18, 24)
 
         setContentView(R.layout.activity_chitato_web)
 
@@ -32,15 +36,12 @@ class ChitatoWebActivity : AppCompatActivity() {
         webView.loadUrl("https://www.indofood.com/product/chitato")
     }
 
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return true
     }
 
-
     override fun onBackPressed() {
-
         if (webView.canGoBack()) {
             webView.goBack()
         } else {

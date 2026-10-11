@@ -3,230 +3,170 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light">
 
-
-    <!-- HEADER MERAH -->
-
+    <!-- Header Merah -->
     <View
         android:id="@+id/headerRed"
         android:layout_width="0dp"
-        android:layout_height="175dp"
+        android:layout_height="170dp"
         android:background="@color/chitato_red"
-
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-
-    <!-- JUDUL APLIKASI -->
-
+    <!-- Judul CHITATO -->
     <TextView
         android:id="@+id/tvAppTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="CHITATO"
         android:textColor="@color/text_white"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.05"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/headerRed" />
+        app:layout_constraintBottom_toBottomOf="@id/headerRed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-
-    <!-- CARD UTAMA -->
-
+    <!-- Card Utama -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:cardBackgroundColor="@color/card_bg"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="24dp">
 
-
-            <!-- LOGO / GAMBAR CHITATO -->
-
+            <!-- Gambar Chitato -->
             <ImageView
                 android:id="@+id/imgChitato"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-
                 android:src="@drawable/img_chitato"
                 android:contentDescription="@string/snack_title"
                 android:scaleType="centerInside"
-
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-
-            <!-- LABEL -->
-
+            <!-- Label -->
             <TextView
                 android:id="@+id/tvLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
                 android:text="SNACK FAVORIT"
                 android:textColor="@color/chitato_red"
                 android:textSize="12sp"
                 android:textStyle="bold"
-
-                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/imgChitato"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgChitato" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-
-            <!-- SELAMAT DATANG -->
-
+            <!-- Judul -->
             <TextView
                 android:id="@+id/tvWelcome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:text="Selamat Datang"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
                 android:gravity="center"
-
                 android:layout_marginTop="6dp"
-
+                app:layout_constraintTop_toBottomOf="@id/tvLabel"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvLabel" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-
-            <!-- DESKRIPSI -->
-
+            <!-- Deskripsi -->
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:text="Jelajahi informasi produk dan kandungan gizi Chitato favoritmu."
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif"
                 android:gravity="center"
-
                 android:layout_marginTop="8dp"
-
+                app:layout_constraintTop_toBottomOf="@id/tvWelcome"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-
-            <!-- GARIS KUNING -->
-
+            <!-- Aksen Kuning -->
             <View
                 android:id="@+id/yellowLine"
                 android:layout_width="50dp"
                 android:layout_height="4dp"
-
                 android:background="@color/chitato_yellow"
-
                 android:layout_marginTop="16dp"
-
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-
-            <!-- TOMBOL DETAIL -->
-
+            <!-- Tombol Detail -->
             <Button
                 android:id="@+id/btnMyProject"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
-
                 android:text="@string/btn_my_project"
                 android:textColor="@color/text_white"
                 android:textAllCaps="false"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-
                 android:background="@drawable/bg_chitato_button"
-
                 android:layout_marginTop="20dp"
-
+                app:layout_constraintTop_toBottomOf="@id/yellowLine"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/yellowLine" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-
-            <!-- TOMBOL WEBSITE -->
-
+            <!-- Tombol Website -->
             <Button
                 android:id="@+id/btnWebsite"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
-
-                android:layout_marginTop="12dp"
-                android:background="@drawable/bg_chitato_yellow"
-                android:fontFamily="sans-serif-medium"
                 android:text="@string/btn_website"
-                android:textAllCaps="false"
                 android:textColor="@color/text_primary"
-
+                android:textAllCaps="false"
                 android:textSize="14sp"
-
                 android:textStyle="bold"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/bg_chitato_yellow"
+                android:layout_marginTop="12dp"
                 app:layout_constraintTop_toBottomOf="@id/btnMyProject"
-                app:layout_constraintVertical_bias="0.0" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <!-- Footer -->
     <TextView
         android:id="@+id/tvFooter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="Informasi Produk Chitato"
         android:textColor="@color/text_secondary"
         android:textSize="11sp"
-        android:fontFamily="sans-serif"
-
         android:layout_marginBottom="14dp"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
