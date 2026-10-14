@@ -1,3 +1,4 @@
+
 package com.example.nnz_chitato
 
 import android.content.Intent
@@ -19,6 +20,13 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Mengambil username dari SharedPreferences
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val username = sharedPref.getString("username", "Pengguna")
+
+        binding.txtWelcome.text = "Hi, $username!"
+
+        // Mengatur jarak konten dari system bars
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars()

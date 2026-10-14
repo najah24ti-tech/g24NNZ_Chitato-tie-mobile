@@ -6,82 +6,196 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_blue"
-    android:padding="16dp">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="4dp">
 
+    <!-- Header -->
     <TextView
         android:id="@+id/txtWelcome"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Hi, Najah!"
         android:textColor="@color/text_dark"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txtRoleBadge" />
+
+    <TextView
+        android:id="@+id/txtRoleBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="7dp"
+        android:text="OWNER"
+        android:textColor="@color/primary_blue"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/txtWelcome"
+        app:layout_constraintBottom_toBottomOf="@id/txtWelcome"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/txtRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Owner"
+        android:layout_marginTop="4dp"
+        android:text="Ringkasan penjualan skincare"
         android:textColor="@color/text_gray"
-        android:textSize="12sp"
+        android:textSize="13sp"
         app:layout_constraintTop_toBottomOf="@id/txtWelcome"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Periode laporan -->
+    <TextView
+        android:id="@+id/txtPeriodLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Periode laporan"
+        android:textColor="@color/text_dark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txtRole"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerMonth"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/card_background"
-        android:paddingHorizontal="8dp"
-        app:layout_constraintTop_toBottomOf="@id/txtRole"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintTop_toBottomOf="@id/txtPeriodLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Kartu Total Sales -->
     <TextView
         android:id="@+id/txtSales"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="5dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="6dp"
         android:background="@drawable/card_background"
-        android:padding="10dp"
-        android:text="Total Sales&#10;Rp 150.000.000&#10;↑ 15%"
-        android:textColor="@color/primary_blue"
-        android:textSize="12sp"
+        android:text=""
         app:layout_constraintTop_toBottomOf="@id/spinnerMonth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/txtOrders"
         app:layout_constraintHorizontal_weight="1" />
 
     <TextView
-        android:id="@+id/txtOrders"
+        android:id="@+id/txtSalesLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:background="@drawable/card_background"
-        android:padding="10dp"
-        android:text="Total Order&#10;350&#10;↑ 10%"
-        android:textColor="@color/primary_blue"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Total Sales"
+        android:textColor="@color/text_gray"
         android:textSize="12sp"
         app:layout_constraintTop_toTopOf="@id/txtSales"
+        app:layout_constraintStart_toStartOf="@id/txtSales"
+        app:layout_constraintEnd_toEndOf="@id/txtSales" />
+
+    <TextView
+        android:id="@+id/txtSalesValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
+        android:text="Rp 150 jt"
+        android:textColor="@color/text_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txtSalesLabel"
+        app:layout_constraintStart_toStartOf="@id/txtSales"
+        app:layout_constraintEnd_toEndOf="@id/txtSales" />
+
+    <TextView
+        android:id="@+id/txtSalesGrowth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:text="↑ 15% dari periode lalu"
+        android:textColor="@color/primary_blue"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/txtSalesValue"
+        app:layout_constraintStart_toStartOf="@id/txtSales"
+        app:layout_constraintEnd_toEndOf="@id/txtSales" />
+
+    <!-- Kartu Total Order -->
+    <TextView
+        android:id="@+id/txtOrders"
+        android:layout_width="0dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/card_background"
+        android:text=""
+        app:layout_constraintTop_toBottomOf="@id/spinnerMonth"
         app:layout_constraintStart_toEndOf="@id/txtSales"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1" />
 
     <TextView
-        android:id="@+id/txtPerformance"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtOrdersLabel"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Total Order"
+        android:textColor="@color/text_gray"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/txtOrders"
+        app:layout_constraintStart_toStartOf="@id/txtOrders"
+        app:layout_constraintEnd_toEndOf="@id/txtOrders" />
+
+    <TextView
+        android:id="@+id/txtOrdersValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
+        android:text="350"
+        android:textColor="@color/text_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txtOrdersLabel"
+        app:layout_constraintStart_toStartOf="@id/txtOrders"
+        app:layout_constraintEnd_toEndOf="@id/txtOrders" />
+
+    <TextView
+        android:id="@+id/txtOrdersGrowth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:text="↑ 10% dari periode lalu"
+        android:textColor="@color/primary_blue"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/txtOrdersValue"
+        app:layout_constraintStart_toStartOf="@id/txtOrders"
+        app:layout_constraintEnd_toEndOf="@id/txtOrders" />
+
+    <!-- Performa penjualan -->
+    <TextView
+        android:id="@+id/txtPerformance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:text="Sales Performance"
         android:textColor="@color/text_dark"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/txtSales"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txtViewDetails" />
 
     <TextView
         android:id="@+id/txtViewDetails"
@@ -89,45 +203,68 @@
         android:layout_height="wrap_content"
         android:text="View Details"
         android:textColor="@color/primary_blue"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintTop_toTopOf="@id/txtPerformance"
         app:layout_constraintBottom_toBottomOf="@id/txtPerformance"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/txtChart"
+    <!-- Grafik penjualan -->
+
+    <!-- Kategori teratas -->
+    <LinearLayout
+        android:id="@+id/chartCard"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="132dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/card_background"
-        android:gravity="center"
-        android:text="Sales Trend&#10;／＼＿／＼＿／"
-        android:textColor="@color/primary_blue"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/txtPerformance"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtPerformance">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tren Penjualan"
+            android:textColor="@color/text_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtChart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Jan      Feb      Mar      Apr      Mei"
+            android:textColor="@color/primary_blue"
+            android:textSize="11sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtCategory"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="20dp"
         android:text="Top Category"
         android:textColor="@color/text_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/txtChart"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/chartCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/categoryList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/card_background"
         android:orientation="vertical"
-        android:padding="12dp"
+        android:padding="14dp"
         app:layout_constraintTop_toBottomOf="@id/txtCategory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,38 +274,39 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Skincare          ━━━━━━━"
+            android:paddingVertical="8dp"
+            android:text="Skincare                         ━━━━━━━"
             android:textColor="@color/primary_blue"
-            android:textSize="13sp"
-            android:paddingVertical="6dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Makeup            ━━━━━"
+            android:paddingVertical="8dp"
+            android:text="Makeup                           ━━━━━"
             android:textColor="@color/chart_purple"
-            android:textSize="13sp"
-            android:paddingVertical="6dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Haircare           ━━━━"
+            android:paddingVertical="8dp"
+            android:text="Haircare                          ━━━━"
             android:textColor="@color/chart_pink"
-            android:textSize="13sp"
-            android:paddingVertical="6dp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
+    <!-- Navigasi bawah -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="2dp"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:background="@drawable/bg_bottom_nav"
         android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -179,10 +317,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/baseline_home_24"
             android:contentDescription="Home"
-            android:padding="14dp"
+            android:padding="13dp"
             android:scaleType="fitCenter"
+            android:src="@drawable/baseline_home_24"
             app:tint="@color/primary_blue" />
 
         <ImageButton
@@ -191,10 +329,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/baseline_bar_chart_24"
             android:contentDescription="Dashboard"
-            android:padding="14dp"
+            android:padding="13dp"
             android:scaleType="fitCenter"
+            android:src="@drawable/baseline_bar_chart_24"
             app:tint="#111111" />
 
         <ImageButton
@@ -203,10 +341,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/baseline_person_24"
             android:contentDescription="Profile"
-            android:padding="14dp"
+            android:padding="13dp"
             android:scaleType="fitCenter"
+            android:src="@drawable/baseline_person_24"
             app:tint="#555555" />
 
     </LinearLayout>

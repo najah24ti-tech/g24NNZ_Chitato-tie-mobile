@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -45,6 +44,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.2")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
