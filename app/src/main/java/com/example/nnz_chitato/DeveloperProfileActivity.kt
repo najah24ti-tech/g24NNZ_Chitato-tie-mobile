@@ -2,7 +2,7 @@ package com.example.nnz_chitato
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nnz_chitato.databinding.A
+import com.example.nnz_chitato.databinding.ActivityDeveloperProfileBinding
 
 class DeveloperProfileActivity : AppCompatActivity() {
 

@@ -31,7 +31,14 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Tombol Dashboard
-        binding.navDashboard.setOnClickListener {
+        binding.navHome.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
+        }
+
+        // Tombol Sales
+        binding.navSales.setOnClickListener {
+            startActivity(Intent(this, SalesActivity::class.java))
             finish()
         }
 
@@ -49,7 +56,7 @@ class ProfileActivity : AppCompatActivity() {
             ).show()
         }
 
-        // Tombol menuju Developer Profile
+        // Tombol About Developer
         binding.btnDeveloperProfile.setOnClickListener {
             startActivity(
                 Intent(this, DeveloperProfileActivity::class.java)
