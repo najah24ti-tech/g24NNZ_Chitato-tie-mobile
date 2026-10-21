@@ -1,9 +1,12 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.NNZ_Chitato" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.NNZ_Chitato" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#284DA5</item>
+        <item name="colorSecondary">#284DA5</item>
+        <item name="android:statusBarColor">#E7EDFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">#E7EDFF</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">#E7EDFF</item>
     </style>
-
-    <style name="Theme.NNZ_Chitato" parent="Base.Theme.NNZ_Chitato" />
 </resources>
