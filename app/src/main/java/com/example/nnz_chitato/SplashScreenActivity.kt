@@ -1,4 +1,3 @@
-
 package com.example.nnz_chitato
 
 import android.content.Intent
@@ -24,7 +23,7 @@ class SplashScreenActivity : AppCompatActivity() {
             val isLogin = sharedPref.getBoolean("isLogin", false)
 
             val tujuan = if (isLogin) {
-                DashboardActivity::class.java
+                BaseActivity::class.java
             } else {
                 AuthActivity::class.java
             }

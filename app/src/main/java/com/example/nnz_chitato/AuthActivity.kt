@@ -40,7 +40,7 @@ class AuthActivity : AppCompatActivity() {
                     .putString("username", username)
                     .apply()
 
-                val intent = Intent(this, DashboardActivity::class.java)
+                val intent = Intent(this, BaseActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
                         Intent.FLAG_ACTIVITY_CLEAR_TASK
 
