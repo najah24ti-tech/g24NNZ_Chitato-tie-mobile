@@ -6,17 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_blue"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="4dp">
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="12dp">
 
-    <!-- Header -->
     <TextView
         android:id="@+id/txtWelcome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:text="Hi, Najah!"
         android:textColor="@color/text_dark"
         android:textSize="22sp"
@@ -51,7 +50,6 @@
         app:layout_constraintTop_toBottomOf="@id/txtWelcome"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Periode laporan -->
     <TextView
         android:id="@+id/txtPeriodLabel"
         android:layout_width="wrap_content"
@@ -75,7 +73,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Kartu Total Sales -->
     <TextView
         android:id="@+id/txtSales"
         android:layout_width="0dp"
@@ -129,7 +126,6 @@
         app:layout_constraintStart_toStartOf="@id/txtSales"
         app:layout_constraintEnd_toEndOf="@id/txtSales" />
 
-    <!-- Kartu Total Order -->
     <TextView
         android:id="@+id/txtOrders"
         android:layout_width="0dp"
@@ -183,7 +179,6 @@
         app:layout_constraintStart_toStartOf="@id/txtOrders"
         app:layout_constraintEnd_toEndOf="@id/txtOrders" />
 
-    <!-- Performa penjualan -->
     <TextView
         android:id="@+id/txtPerformance"
         android:layout_width="0dp"
@@ -208,9 +203,6 @@
         app:layout_constraintBottom_toBottomOf="@id/txtPerformance"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Grafik penjualan -->
-
-    <!-- Kategori teratas -->
     <LinearLayout
         android:id="@+id/chartCard"
         android:layout_width="0dp"
@@ -219,9 +211,8 @@
         android:background="@drawable/card_background"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtPerformance">
 
         <TextView
@@ -241,7 +232,6 @@
             android:text="Jan      Feb      Mar      Apr      Mei"
             android:textColor="@color/primary_blue"
             android:textSize="11sp" />
-
     </LinearLayout>
 
     <TextView
@@ -294,15 +284,15 @@
             android:text="Haircare                          ━━━━"
             android:textColor="@color/chart_pink"
             android:textSize="12sp" />
-
     </LinearLayout>
 
-    <!-- Navigasi bawah -->
+    <!-- Navigasi bawah: Home, Dashboard, Sales, Profile -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="2dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/bg_bottom_nav"
         android:elevation="4dp"
         android:gravity="center"
@@ -318,22 +308,20 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Home"
-            android:padding="13dp"
-            android:scaleType="fitCenter"
+            android:padding="10dp"
             android:src="@drawable/baseline_home_24"
             app:tint="@color/primary_blue" />
 
         <ImageButton
-            android:id="@+id/navDashboard"
+            android:id="@+id/navSales"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:contentDescription="Dashboard"
-            android:padding="13dp"
-            android:scaleType="fitCenter"
+            android:contentDescription="Sales"
+            android:padding="10dp"
             android:src="@drawable/baseline_bar_chart_24"
-            app:tint="#111111" />
+            app:tint="#555555" />
 
         <ImageButton
             android:id="@+id/navProfile"
@@ -342,11 +330,9 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Profile"
-            android:padding="13dp"
-            android:scaleType="fitCenter"
+            android:padding="10dp"
             android:src="@drawable/baseline_person_24"
             app:tint="#555555" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
