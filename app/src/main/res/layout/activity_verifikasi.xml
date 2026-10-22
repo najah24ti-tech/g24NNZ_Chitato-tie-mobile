@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_blue"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verifikasi Registrasi"
+            android:textColor="@color/primary_blue"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:text="Periksa kembali data registrasi kamu"
+            android:textColor="@color/text_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama lengkap"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/text_dark"
+            android:background="@drawable/card_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Email"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/text_dark"
+            android:background="@drawable/card_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Tanggal lahir"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTanggalLahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/text_dark"
+            android:background="@drawable/card_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Jenis kelamin"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtJenisKelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/text_dark"
+            android:background="@drawable/card_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Username"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/text_dark"
+            android:background="@drawable/card_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Password"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/text_dark"
+            android:background="@drawable/card_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Konfirmasi password"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/text_dark"
+            android:background="@drawable/card_background" />
+
+        <Button
+            android:id="@+id/btnKembali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Kembali"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/primary_blue"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</ScrollView>
