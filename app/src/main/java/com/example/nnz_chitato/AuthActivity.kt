@@ -18,9 +18,21 @@ class AuthActivity : AppCompatActivity() {
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Tombol menuju halaman registrasi
+        binding.btnKeRegistrasi.setOnClickListener {
+            startActivity(
+                Intent(this, RegisterActivity::class.java)
+            )
+        }
+
+        // Proses login
         binding.btnLogin.setOnClickListener {
-            val username = binding.edtUsername.text.toString().trim()
-            val password = binding.edtPassword.text.toString()
+            val username = binding.edtUsername.text
+                .toString()
+                .trim()
+
+            val password = binding.edtPassword.text
+                .toString()
 
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(
@@ -28,28 +40,55 @@ class AuthActivity : AppCompatActivity() {
                     "Username dan password harus diisi",
                     Toast.LENGTH_SHORT
                 ).show()
+
                 return@setOnClickListener
             }
 
-            if (username == password) {
-                val sharedPref =
-                    getSharedPreferences("user_pref", MODE_PRIVATE)
+            // Ambil data akun yang tersimpan saat registrasi
+            val sharedPref = getSharedPreferences(
+                "user_pref",
+                MODE_PRIVATE
+            )
 
+            val savedUsername =
+                sharedPref.getString("username", "")
+
+            val savedPassword =
+                sharedPref.getString("password", "")
+
+            // Validasi login menggunakan data registrasi
+            if (
+                username == savedUsername &&
+                password == savedPassword &&
+                !savedUsername.isNullOrEmpty() &&
+                !savedPassword.isNullOrEmpty()
+            ) {
                 sharedPref.edit()
                     .putBoolean("isLogin", true)
-                    .putString("username", username)
                     .apply()
 
-                val intent = Intent(this, BaseActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+                Toast.makeText(
+                    this,
+                    "Login berhasil",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                val intent = Intent(
+                    this,
+                    BaseActivity::class.java
+                )
+
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                 startActivity(intent)
                 finish()
+
             } else {
                 AlertDialog.Builder(this)
                     .setTitle("Login Gagal")
-                    .setMessage("Silahkan coba lagi")
+                    .setMessage("Username atau password salah")
                     .setPositiveButton("OK", null)
                     .show()
             }
