@@ -1,3 +1,4 @@
+
 package com.example.nnz_chitato
 
 import android.content.Intent
@@ -19,32 +20,70 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Mengambil username dari SharedPreferences
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-        val username = sharedPref.getString("username", "Pengguna") ?: "Pengguna"
+        val sharedPref = getSharedPreferences(
+            "user_pref",
+            MODE_PRIVATE
+        )
+
+        val username = sharedPref.getString(
+            "username",
+            "Pengguna"
+        ) ?: "Pengguna"
 
         binding.txtProfileUsername.text = username
         binding.txtProfileName.text = username
 
-        // Tombol Home
+        // Memperbarui teks tombol sesuai tema aktif
+        updateThemeButton()
+
+        // Tombol Ganti Mode Gelap
+        binding.btnDarkMode.setOnClickListener {
+            ThemeManager.toggleTheme(this)
+
+            // Tema akan diterapkan dan Activity biasanya dibuat ulang
+        }
+
+        // Navigasi Dashboard
         binding.navHome.setOnClickListener {
+            val intent = Intent(
+                this,
+                DashboardActivity::class.java
+            )
+
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+            startActivity(intent)
             finish()
         }
 
-        // Tombol Dashboard
-        binding.navHome.setOnClickListener {
-            startActivity(Intent(this, DashboardActivity::class.java))
-            finish()
-        }
-
-        // Tombol Sales
+        // Navigasi Sales
         binding.navSales.setOnClickListener {
-            startActivity(Intent(this, SalesActivity::class.java))
+            startActivity(
+                Intent(this, SalesActivity::class.java)
+            )
             finish()
         }
 
-        // Tombol Profile
+        // Navigasi Input
+        binding.navInput.setOnClickListener {
+            startActivity(
+                Intent(this, InputSalesActivity::class.java)
+            )
+            finish()
+        }
+
+        // Navigasi Detail
+        binding.navDetail.setOnClickListener {
+            startActivity(
+                Intent(this, DetailSalesActivity::class.java)
+            )
+            finish()
+        }
+
+        // Navigasi Profile
         binding.navProfile.setOnClickListener {
-            // Tetap di halaman Profile
+            // Tetap berada di halaman Profile
         }
 
         // Tombol Edit Profile
@@ -59,7 +98,10 @@ class ProfileActivity : AppCompatActivity() {
         // Tombol About Developer
         binding.btnDeveloperProfile.setOnClickListener {
             startActivity(
-                Intent(this, DeveloperProfileActivity::class.java)
+                Intent(
+                    this,
+                    DeveloperProfileActivity::class.java
+                )
             )
         }
 
@@ -69,13 +111,18 @@ class ProfileActivity : AppCompatActivity() {
                 .setTitle("Konfirmasi Logout")
                 .setMessage("Apakah kamu yakin ingin logout?")
                 .setPositiveButton("Ya") { _, _ ->
-                    // Menghapus data login
+
+                    // Hapus data login saja
                     sharedPref.edit {
                         clear()
                     }
 
                     // Kembali ke halaman Login
-                    val intent = Intent(this, AuthActivity::class.java)
+                    val intent = Intent(
+                        this,
+                        AuthActivity::class.java
+                    )
+
                     intent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or
                                 Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -86,5 +133,14 @@ class ProfileActivity : AppCompatActivity() {
                 .setNegativeButton("Tidak", null)
                 .show()
         }
+    }
+
+    private fun updateThemeButton() {
+        binding.btnDarkMode.text =
+            if (ThemeManager.isDarkMode(this)) {
+                "Aktifkan Mode Terang"
+            } else {
+                "Aktifkan Mode Gelap"
+            }
     }
 }

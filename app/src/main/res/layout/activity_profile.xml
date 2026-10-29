@@ -19,6 +19,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Tombol Dark Mode di pojok kanan atas -->
+    <Button
+        android:id="@+id/btnDarkMode"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:text="Mode Gelap"
+        android:textSize="11sp"
+        android:textAllCaps="false"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:backgroundTint="@color/primary_blue"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- Kartu profil -->
     <LinearLayout
         android:id="@+id/profileCard"
@@ -146,7 +163,7 @@
         android:id="@+id/btnDeveloperProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#F5D5D5"
         android:text="About Developer"
         android:textAllCaps="false"
@@ -167,7 +184,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Navigasi bawah -->
+    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
@@ -188,10 +205,9 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Home"
-            android:padding="12dp"
+            android:padding="8dp"
             android:src="@drawable/baseline_home_24"
             app:tint="#555555" />
-
 
         <ImageButton
             android:id="@+id/navSales"
@@ -200,8 +216,30 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Sales"
-            android:padding="12dp"
+            android:padding="8dp"
             android:src="@drawable/baseline_bar_chart_24"
+            app:tint="#555555" />
+
+        <ImageButton
+            android:id="@+id/navInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Input Penjualan"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="#555555" />
+
+        <ImageButton
+            android:id="@+id/navDetail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Detail Penjualan"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_view"
             app:tint="#555555" />
 
         <ImageButton
@@ -211,7 +249,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Profile"
-            android:padding="12dp"
+            android:padding="8dp"
             android:src="@drawable/baseline_person_24"
             app:tint="@color/primary_blue" />
 

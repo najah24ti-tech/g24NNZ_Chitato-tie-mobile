@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F7FB">
+
+    <!-- Form Input Penjualan -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Tombol Kembali -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Kembali"
+                android:src="@android:drawable/ic_media_previous"
+                android:tint="#263B65" />
+
+            <!-- Judul -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Input Penjualan"
+                android:textColor="#263B65"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Masukkan informasi transaksi penjualan"
+                android:textColor="#777777"
+                android:textSize="14sp" />
+
+            <!-- Tanggal Penjualan -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Tanggal Penjualan"
+                android:textColor="#263B65"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/edit_text"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Pilih tanggal"
+                android:padding="12dp"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <!-- Nama BA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Nama BA"
+                android:textColor="#263B65"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etBA"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:hint="Masukkan nama BA"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:textSize="14sp" />
+
+            <!-- Wilayah -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Wilayah"
+                android:textColor="#263B65"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spRegion"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Produk -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Produk"
+                android:textColor="#263B65"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spProduct"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Jumlah Produk -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Jumlah Produk"
+                android:textColor="#263B65"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:hint="Masukkan jumlah"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textSize="14sp" />
+
+            <!-- Harga Produk -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Harga Jual per Produk (Rp)"
+                android:textColor="#263B65"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPrice"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:hint="Contoh: 150000"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textSize="14sp" />
+
+            <!-- Total Penjualan -->
+            <TextView
+                android:id="@+id/tvSubtotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#E5ECFF"
+                android:padding="16dp"
+                android:text="Total Penjualan: Rp0"
+                android:textColor="#263B65"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <!-- Tombol Simpan -->
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:text="Simpan Penjualan" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_bottom_nav"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Home"
+            android:padding="10dp"
+            android:src="@drawable/baseline_home_24"
+            app:tint="#555555" />
+
+        <ImageButton
+            android:id="@+id/navSales"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Sales"
+            android:padding="10dp"
+            android:src="@drawable/baseline_bar_chart_24"
+            app:tint="#555555" />
+
+        <ImageButton
+            android:id="@+id/navInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Input Penjualan"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="@color/primary_blue" />
+
+        <ImageButton
+            android:id="@+id/navDetail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Detail Penjualan"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_menu_view"
+            app:tint="#555555" />
+
+        <ImageButton
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Profil"
+            android:padding="10dp"
+            android:src="@drawable/baseline_person_24"
+            app:tint="#555555" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -31,9 +31,11 @@ class SalesActivity : AppCompatActivity() {
             R.layout.simple_spinner_item,
             listOf("Today", "This Week", "This Month")
         )
+
         dateAdapter.setDropDownViewResource(
             R.layout.simple_spinner_dropdown_item
         )
+
         binding.spFilterDate.adapter = dateAdapter
 
         // Filter kategori
@@ -42,9 +44,11 @@ class SalesActivity : AppCompatActivity() {
             R.layout.simple_spinner_item,
             listOf("All Category", "Skincare", "Bodycare", "Makeup")
         )
+
         categoryAdapter.setDropDownViewResource(
             R.layout.simple_spinner_dropdown_item
         )
+
         binding.spFilterCategory.adapter = categoryAdapter
 
         // Daftar produk
@@ -67,8 +71,10 @@ class SalesActivity : AppCompatActivity() {
                     ?: "All Category"
 
             products.forEach { (card, name) ->
-                val matchName =
-                    name.contains(keyword, ignoreCase = true)
+                val matchName = name.contains(
+                    keyword,
+                    ignoreCase = true
+                )
 
                 val matchCategory =
                     category == "All Category" ||
@@ -83,10 +89,12 @@ class SalesActivity : AppCompatActivity() {
             }
         }
 
+        // Pencarian produk
         binding.etSearchProduct.doAfterTextChanged {
             filterProducts()
         }
 
+        // Filter kategori
         binding.spFilterCategory.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
 
@@ -101,16 +109,66 @@ class SalesActivity : AppCompatActivity() {
 
                 override fun onNothingSelected(
                     parent: AdapterView<*>?
-                ) {}
+                ) {
+                    // Tidak ada kategori dipilih
+                }
             }
 
-        // Navigasi Home
+        // Filter tanggal
+        binding.spFilterDate.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    // Pilihan tanggal tersedia.
+                    // Penyaringan berdasarkan tanggal transaksi
+                    // belum diterapkan karena data transaksi
+                    // belum dihubungkan ke halaman ini.
+                }
+
+                override fun onNothingSelected(
+                    parent: AdapterView<*>?
+                ) {
+                    // Tidak ada filter tanggal dipilih
+                }
+            }
+
+        // Navigasi Home / Dashboard
         binding.navHome.setOnClickListener {
+            val intent = Intent(
+                this,
+                DashboardActivity::class.java
+            )
+
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+            startActivity(intent)
             finish()
         }
 
-        // Navigasi Dashboard
-        binding.navHome.setOnClickListener {
+        // Navigasi Sales
+        binding.navSales.setOnClickListener {
+            // Tetap di halaman Sales
+        }
+
+        // Navigasi Input
+        binding.navInput.setOnClickListener {
+            startActivity(
+                Intent(this, InputSalesActivity::class.java)
+            )
+            finish()
+        }
+
+        // Navigasi Detail
+        binding.navDetail.setOnClickListener {
+            startActivity(
+                Intent(this, DetailSalesActivity::class.java)
+            )
             finish()
         }
 

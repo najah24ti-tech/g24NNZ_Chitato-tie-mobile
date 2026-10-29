@@ -16,7 +16,7 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Mengatur warna status bar dan ikon sistem
+        // Mengatur warna status bar dan navigation bar
         window.statusBarColor = Color.rgb(231, 237, 255)
         window.navigationBarColor = Color.rgb(231, 237, 255)
 
@@ -30,16 +30,23 @@ class DashboardActivity : AppCompatActivity() {
             window.decorView
         ).isAppearanceLightNavigationBars = true
 
+        // Menghubungkan layout Dashboard
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Mengambil username dari SharedPreferences
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-        val username = sharedPref.getString("username", "Pengguna") ?: "Pengguna"
+        val sharedPref = getSharedPreferences(
+            "user_pref",
+            MODE_PRIVATE
+        )
+        val username = sharedPref.getString(
+            "username",
+            "Pengguna"
+        ) ?: "Pengguna"
 
         binding.txtWelcome.text = "Hi, $username!"
 
-        // Memberi jarak konten dari status bar dan navigasi sistem
+        // Mengatur jarak konten dari status bar dan navigasi sistem
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars()
@@ -55,19 +62,37 @@ class DashboardActivity : AppCompatActivity() {
             insets
         }
 
-        // Tombol Home
+        // Tombol Home: tetap di Dashboard
         binding.navHome.setOnClickListener {
-            // Tetap di halaman Dashboard
+            // Tidak perlu berpindah halaman
         }
 
         // Tombol Sales
         binding.navSales.setOnClickListener {
-            startActivity(Intent(this, SalesActivity::class.java))
+            startActivity(
+                Intent(this, SalesActivity::class.java)
+            )
+        }
+
+        // Tombol Input
+        binding.navInput.setOnClickListener {
+            startActivity(
+                Intent(this, InputSalesActivity::class.java)
+            )
+        }
+
+        // Tombol Detail
+        binding.navDetail.setOnClickListener {
+            startActivity(
+                Intent(this, DetailSalesActivity::class.java)
+            )
         }
 
         // Tombol Profile
         binding.navProfile.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(
+                Intent(this, ProfileActivity::class.java)
+            )
         }
     }
 }

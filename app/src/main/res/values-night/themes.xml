@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.NNZ_Chitato" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#284DA5</item>
-        <item name="colorSecondary">#284DA5</item>
-        <item name="android:statusBarColor">#E7EDFF</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:navigationBarColor">#E7EDFF</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowBackground">#E7EDFF</item>
+        <item name="colorPrimary">#90AFFF</item>
+        <item name="colorSecondary">#90AFFF</item>
+        <item name="android:statusBarColor">#121826</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">#121826</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowBackground">#121826</item>
     </style>
 </resources>

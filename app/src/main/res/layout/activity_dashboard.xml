@@ -286,7 +286,7 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <!-- Navigasi bawah: Home, Dashboard, Sales, Profile -->
+    <!-- Bottom Navigation: 5 menu -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
@@ -324,6 +324,28 @@
             app:tint="#555555" />
 
         <ImageButton
+            android:id="@+id/navInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Input Sales"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="#555555" />
+
+        <ImageButton
+            android:id="@+id/navDetail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Detail Sales"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_menu_view"
+            app:tint="#555555" />
+
+        <ImageButton
             android:id="@+id/navProfile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -333,6 +355,7 @@
             android:padding="10dp"
             android:src="@drawable/baseline_person_24"
             app:tint="#555555" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

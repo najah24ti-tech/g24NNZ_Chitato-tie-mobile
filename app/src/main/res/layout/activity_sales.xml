@@ -388,6 +388,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Home -->
         <ImageButton
             android:id="@+id/navHome"
             android:layout_width="0dp"
@@ -395,10 +396,11 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Home"
-            android:padding="10dp"
+            android:padding="8dp"
             android:src="@drawable/baseline_home_24"
             app:tint="@color/text_dark" />
-        
+
+        <!-- Sales aktif -->
         <ImageButton
             android:id="@+id/navSales"
             android:layout_width="0dp"
@@ -406,10 +408,35 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Sales"
-            android:padding="10dp"
+            android:padding="8dp"
             android:src="@drawable/baseline_bar_chart_24"
             app:tint="@color/primary_blue" />
 
+        <!-- Input -->
+        <ImageButton
+            android:id="@+id/navInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Input Penjualan"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="@color/text_dark" />
+
+        <!-- Detail -->
+        <ImageButton
+            android:id="@+id/navDetail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Detail Penjualan"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_view"
+            app:tint="@color/text_dark" />
+
+        <!-- Profile -->
         <ImageButton
             android:id="@+id/navProfile"
             android:layout_width="0dp"
@@ -417,9 +444,10 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Profile"
-            android:padding="10dp"
+            android:padding="8dp"
             android:src="@drawable/baseline_person_24"
             app:tint="@color/text_dark" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
