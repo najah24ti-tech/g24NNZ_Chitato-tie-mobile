@@ -37,6 +37,7 @@ class ProfileFragment : Fragment() {
             container,
             false
         )
+
         return binding.root
     }
 
@@ -71,8 +72,9 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    // Mengambil data langsung dari registrasi
+    // Mengambil data profil dari registrasi
     private fun loadProfile() {
+
         val username = userPrefs.getString(
             "username",
             "Pengguna"
@@ -88,21 +90,20 @@ class ProfileFragment : Fragment() {
             ""
         ) ?: ""
 
-        val wilayah = userPrefs.getString(
-            "wilayah",
-            ""
-        ) ?: ""
-
         binding.txtProfileUsername.text = username
         binding.txtProfileName.text = nama
 
         binding.txtProfileEmail.text =
-            if (email.isBlank()) "Belum diatur" else email
-
+            if (email.isBlank()) {
+                "Belum diatur"
+            } else {
+                email
+            }
     }
 
     // Dialog Edit Profile
     private fun showEditProfileDialog() {
+
         val context = requireContext()
 
         val currentName = userPrefs.getString(
@@ -130,8 +131,9 @@ class ProfileFragment : Fragment() {
             hint = "Masukkan email"
             setText(currentEmail)
             isSingleLine = true
-            inputType = InputType.TYPE_CLASS_TEXT or
-                    InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+            inputType =
+                InputType.TYPE_CLASS_TEXT or
+                        InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
         }
 
         container.addView(nameInput)
@@ -146,14 +148,15 @@ class ProfileFragment : Fragment() {
             .create()
 
         dialog.setOnShowListener {
+
             dialog.getButton(AlertDialog.BUTTON_POSITIVE)
                 .setOnClickListener {
+
                     val newName =
                         nameInput.text.toString().trim()
 
                     val newEmail =
                         emailInput.text.toString().trim()
-
 
                     if (newName.isBlank()) {
                         nameInput.error =
@@ -178,6 +181,7 @@ class ProfileFragment : Fragment() {
                         .commit()
 
                     if (saved) {
+
                         loadProfile()
 
                         Toast.makeText(
@@ -187,7 +191,9 @@ class ProfileFragment : Fragment() {
                         ).show()
 
                         dialog.dismiss()
+
                     } else {
+
                         Toast.makeText(
                             context,
                             "Gagal menyimpan profil",
@@ -202,28 +208,41 @@ class ProfileFragment : Fragment() {
 
     // Konfirmasi Logout
     private fun showLogoutConfirmation() {
+
         AlertDialog.Builder(requireContext())
             .setTitle("Konfirmasi Logout")
             .setMessage("Apakah kamu yakin ingin logout?")
             .setPositiveButton("Ya") { _, _ ->
 
-                // Hanya mengubah status login.
-                // Data registrasi tetap tersimpan.
-                userPrefs.edit()
+                // Logout tanpa menghapus data akun.
+                // Onboarding akan ditampilkan kembali.
+                val berhasil = userPrefs.edit()
                     .putBoolean("isLogin", false)
-                    .apply()
+                    .putBoolean("onboarding_completed", false)
+                    .commit()
 
-                val intent = Intent(
-                    requireContext(),
-                    AuthActivity::class.java
-                )
+                if (berhasil) {
 
-                intent.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    val intent = Intent(
+                        requireContext(),
+                        SplashScreenActivity::class.java
+                    )
 
-                startActivity(intent)
-                requireActivity().finish()
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                    startActivity(intent)
+                    requireActivity().finish()
+
+                } else {
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Gagal melakukan logout",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
             .setNegativeButton("Tidak", null)
             .show()
@@ -231,6 +250,7 @@ class ProfileFragment : Fragment() {
 
     // Mengubah teks tombol Dark Mode
     private fun updateThemeButton() {
+
         binding.btnDarkMode.text =
             if (ThemeManager.isDarkMode(requireContext())) {
                 "Aktifkan Mode Terang"

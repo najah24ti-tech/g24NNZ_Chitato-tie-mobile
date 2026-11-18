@@ -82,12 +82,22 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun finishOnboarding() {
-        getSharedPreferences("user_pref", MODE_PRIVATE)
-            .edit()
-            .putBoolean("onboarding_completed", true)
-            .apply()
 
-        val intent = Intent(this, AuthActivity::class.java)
+        // Simpan status onboarding sudah selesai
+        val saved = getSharedPreferences(
+            "user_pref",
+            MODE_PRIVATE
+        ).edit()
+            .putBoolean("onboarding_completed", true)
+            .commit()
+
+        if (!saved) return
+
+        // Arahkan pengguna ke halaman Login
+        val intent = Intent(
+            this,
+            LoginActivity::class.java
+        )
 
         intent.flags =
             Intent.FLAG_ACTIVITY_NEW_TASK or
