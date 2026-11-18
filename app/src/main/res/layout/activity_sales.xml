@@ -7,6 +7,7 @@
     android:background="@color/background_blue"
     android:padding="10dp">
 
+    <!-- Judul Halaman -->
     <TextView
         android:id="@+id/txtSalesTitle"
         android:layout_width="wrap_content"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Konten Sales -->
     <LinearLayout
         android:id="@+id/salesContent"
         android:layout_width="0dp"
@@ -30,6 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Header Sales -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -55,11 +58,185 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- Ringkasan Kategori -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Ringkasan Penjualan Kategori"
+            android:textColor="@color/text_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Kartu Ringkasan Horizontal -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- Skincare -->
+                <LinearLayout
+                    android:layout_width="145dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/card_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Skincare"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtSkincareUnits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="0 unit"
+                        android:textColor="@color/text_dark"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtSkincareRevenue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Rp0"
+                        android:textColor="@color/text_gray"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Makeup -->
+                <LinearLayout
+                    android:layout_width="145dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/card_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Makeup"
+                        android:textColor="@color/chart_purple"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtMakeupUnits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="0 unit"
+                        android:textColor="@color/text_dark"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtMakeupRevenue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Rp0"
+                        android:textColor="@color/text_gray"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Haircare -->
+                <LinearLayout
+                    android:layout_width="145dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/card_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Haircare"
+                        android:textColor="@color/chart_pink"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtHaircareUnits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="0 unit"
+                        android:textColor="@color/text_dark"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtHaircareRevenue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Rp0"
+                        android:textColor="@color/text_gray"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Bodycare -->
+                <LinearLayout
+                    android:layout_width="145dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/card_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bodycare"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtBodycareUnits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="0 unit"
+                        android:textColor="@color/text_dark"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtBodycareRevenue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Rp0"
+                        android:textColor="@color/text_gray"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Search Product -->
         <EditText
             android:id="@+id/etSearchProduct"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:hint="⌕ Search product..."
             android:inputType="text"
             android:paddingStart="12dp"
@@ -67,10 +244,11 @@
             android:singleLine="true"
             android:textSize="13sp" />
 
+        <!-- Filter Tanggal dan Kategori -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <Spinner
@@ -89,293 +267,20 @@
                 android:contentDescription="Filter kategori" />
         </LinearLayout>
 
-        <ScrollView
+        <!-- Daftar Produk RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProducts"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:fillViewport="false">
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+            android:overScrollMode="never" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Serum -->
-                <LinearLayout
-                    android:id="@+id/productSerum"
-                    android:layout_width="match_parent"
-                    android:layout_height="76dp"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="52dp"
-                        android:layout_height="match_parent"
-                        android:contentDescription="Serum"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/serum" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Serum"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Skincare&#10;10 Items"
-                            android:textColor="@color/text_gray"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp 1.500.000"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="↑15%"
-                        android:textColor="#16B957"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <!-- Sunscreen -->
-                <LinearLayout
-                    android:id="@+id/productSunscreen"
-                    android:layout_width="match_parent"
-                    android:layout_height="76dp"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="52dp"
-                        android:layout_height="match_parent"
-                        android:contentDescription="Sunscreen"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/sunscreen" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sunscreen"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Skincare&#10;8 Items"
-                            android:textColor="@color/text_gray"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp 4.000.000"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="↑8%"
-                        android:textColor="#16B957"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <!-- Handbody -->
-                <LinearLayout
-                    android:id="@+id/productHandbody"
-                    android:layout_width="match_parent"
-                    android:layout_height="76dp"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="52dp"
-                        android:layout_height="match_parent"
-                        android:contentDescription="Handbody"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/handbody" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Handbody"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bodycare&#10;15 Items"
-                            android:textColor="@color/text_gray"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp 1.050.000"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="↑10%"
-                        android:textColor="#16B957"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <!-- Toner -->
-                <LinearLayout
-                    android:id="@+id/productToner"
-                    android:layout_width="match_parent"
-                    android:layout_height="76dp"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="52dp"
-                        android:layout_height="match_parent"
-                        android:contentDescription="Toner"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/toner" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Toner"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Skincare&#10;10 Items"
-                            android:textColor="@color/text_gray"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp 2.000.000"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="↑15%"
-                        android:textColor="#16B957"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <!-- Lipstick -->
-                <LinearLayout
-                    android:id="@+id/productLipstick"
-                    android:layout_width="match_parent"
-                    android:layout_height="76dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="52dp"
-                        android:layout_height="match_parent"
-                        android:contentDescription="Lipstick"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/lipstick" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lipstick"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Makeup&#10;10 Items"
-                            android:textColor="@color/text_gray"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp 3.000.000"
-                            android:textColor="@color/text_dark"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="↑15%"
-                        android:textColor="#16B957"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
     </LinearLayout>
 
-    <!-- Navigasi bawah -->
+    <!-- Navigasi Bawah Lama -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
@@ -388,65 +293,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Home -->
-        <ImageButton
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="Home"
-            android:padding="8dp"
-            android:src="@drawable/baseline_home_24"
-            app:tint="@color/text_dark" />
 
-        <!-- Sales aktif -->
-        <ImageButton
-            android:id="@+id/navSales"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="Sales"
-            android:padding="8dp"
-            android:src="@drawable/baseline_bar_chart_24"
-            app:tint="@color/primary_blue" />
-
-        <!-- Input -->
-        <ImageButton
-            android:id="@+id/navInput"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="Input Penjualan"
-            android:padding="8dp"
-            android:src="@android:drawable/ic_input_add"
-            app:tint="@color/text_dark" />
-
-        <!-- Detail -->
-        <ImageButton
-            android:id="@+id/navDetail"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="Detail Penjualan"
-            android:padding="8dp"
-            android:src="@android:drawable/ic_menu_view"
-            app:tint="@color/text_dark" />
-
-        <!-- Profile -->
-        <ImageButton
-            android:id="@+id/navProfile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="Profile"
-            android:padding="8dp"
-            android:src="@drawable/baseline_person_24"
-            app:tint="@color/text_dark" />
 
     </LinearLayout>
 

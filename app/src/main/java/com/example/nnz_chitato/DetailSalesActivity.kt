@@ -12,7 +12,7 @@ class DetailSalesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailSalesBinding
 
-    private val rupiah = NumberFormat.getCurrencyInstance(
+    private val rupiah = NumberFormat.getNumberInstance(
         Locale("id", "ID")
     )
 
@@ -32,58 +32,25 @@ class DetailSalesActivity : AppCompatActivity() {
         val price = intent.getLongExtra("price", 0L)
         val subtotal = intent.getLongExtra("subtotal", 0L)
 
-        // Menampilkan data transaksi
+        // Menampilkan detail transaksi
         binding.tvDate.text = date
         binding.tvBA.text = ba
         binding.tvRegion.text = region
         binding.tvProduct.text = product
-        binding.tvQuantity.text = quantity.toString()
-        binding.tvPrice.text = rupiah.format(price)
-        binding.tvSubtotal.text = "Total Penjualan: ${rupiah.format(subtotal)}"
+        binding.tvQuantity.text = "$quantity unit"
+        binding.tvPrice.text = "Rp${rupiah.format(price)}"
+        binding.tvSubtotal.text = "Rp${rupiah.format(subtotal)}"
 
-        // Tombol kembali
+        // Kembali ke halaman sebelumnya
         binding.btnBack.setOnClickListener {
             finish()
         }
 
-        // Bagikan bukti transaksi
-        binding.btnShareTransaction.setOnClickListener {
-            val transaction = """
-                BUKTI TRANSAKSI PENJUALAN
-                ==========================
-                Tanggal: $date
-                Nama BA: $ba
-                Wilayah: $region
-                Produk: $product
-                Jumlah: $quantity
-                Harga per Produk: ${rupiah.format(price)}
-                Total Penjualan: ${rupiah.format(subtotal)}
-
-                Terima kasih.
-            """.trimIndent()
-
-            val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(
-                    Intent.EXTRA_SUBJECT,
-                    "Bukti Transaksi Penjualan"
-                )
-                putExtra(Intent.EXTRA_TEXT, transaction)
-            }
-
-            startActivity(
-                Intent.createChooser(
-                    shareIntent,
-                    "Bagikan Bukti Transaksi"
-                )
-            )
-        }
-
-        // Navigasi Dashboard
-        binding.navHome.setOnClickListener {
+        // Kembali ke Dashboard (HomeFragment)
+        binding.btnDashboard.setOnClickListener {
             val dashboardIntent = Intent(
                 this,
-                DashboardActivity::class.java
+                BaseActivity::class.java
             ).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
                         Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -93,31 +60,48 @@ class DetailSalesActivity : AppCompatActivity() {
             finish()
         }
 
-        // Navigasi Sales
-        binding.navSales.setOnClickListener {
-            startActivity(Intent(this, SalesActivity::class.java))
+        // Membuka tab SalesFragment
+        binding.btnSales.setOnClickListener {
+            val salesIntent = Intent(
+                this,
+                BaseActivity::class.java
+            ).apply {
+                putExtra("open_sales", true)
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                        Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+
+            startActivity(salesIntent)
             finish()
         }
 
-        // Navigasi Input Penjualan
-        binding.navInput.setOnClickListener {
+        // Bagikan transaksi
+        binding.btnShareTransaction.setOnClickListener {
+            val receipt = """
+                DETAIL PENJUALAN HEBEPKU
+
+                Tanggal: $date
+                BA: $ba
+                Wilayah: $region
+                Produk: $product
+                Jumlah: $quantity unit
+                Harga: Rp${rupiah.format(price)}
+
+                Total Penjualan:
+                Rp${rupiah.format(subtotal)}
+            """.trimIndent()
+
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, receipt)
+            }
+
             startActivity(
-                Intent(this, InputSalesActivity::class.java)
+                Intent.createChooser(
+                    shareIntent,
+                    "Bagikan Detail Penjualan"
+                )
             )
-            finish()
-        }
-
-        // Navigasi Detail
-        binding.navDetail.setOnClickListener {
-            // Tetap di halaman Detail Penjualan
-        }
-
-        // Navigasi Profil
-        binding.navProfile.setOnClickListener {
-            startActivity(
-                Intent(this, ProfileActivity::class.java)
-            )
-            finish()
         }
     }
 }

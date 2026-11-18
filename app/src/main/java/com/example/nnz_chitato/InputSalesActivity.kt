@@ -1,3 +1,4 @@
+
 package com.example.nnz_chitato
 
 import android.app.DatePickerDialog
@@ -8,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.nnz_chitato.databinding.ActivityInputSalesBinding
+import org.json.JSONArray
+import org.json.JSONObject
 import java.text.NumberFormat
 import java.util.Calendar
 import java.util.Locale
@@ -26,7 +29,6 @@ class InputSalesActivity : AppCompatActivity() {
         binding = ActivityInputSalesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tombol kembali
         binding.btnBack.setOnClickListener {
             finish()
         }
@@ -58,7 +60,8 @@ class InputSalesActivity : AppCompatActivity() {
             "Sunscreen",
             "Handbody",
             "Toner",
-            "Lipstick"
+            "Lipstick",
+            "Conditioner"
         )
 
         binding.spProduct.adapter = ArrayAdapter(
@@ -71,7 +74,7 @@ class InputSalesActivity : AppCompatActivity() {
             )
         }
 
-        // Memilih tanggal melalui kalender
+        // Memilih tanggal
         binding.etDate.setOnClickListener {
             val calendar = Calendar.getInstance()
 
@@ -92,16 +95,10 @@ class InputSalesActivity : AppCompatActivity() {
             ).show()
         }
 
-        // Menghitung total penjualan secara otomatis
+        // Menghitung subtotal otomatis
         fun updateSubtotal() {
-            val quantity = binding.etQuantity.text
-                .toString()
-                .toIntOrNull() ?: 0
-
-            val price = binding.etPrice.text
-                .toString()
-                .toLongOrNull() ?: 0L
-
+            val quantity = binding.etQuantity.text.toString().toIntOrNull() ?: 0
+            val price = binding.etPrice.text.toString().toLongOrNull() ?: 0L
             val subtotal = quantity * price
 
             binding.tvSubtotal.text =
@@ -116,22 +113,21 @@ class InputSalesActivity : AppCompatActivity() {
             updateSubtotal()
         }
 
-        // Simpan penjualan dan buka Detail
+        // Tombol simpan
         binding.btnSave.setOnClickListener {
+
             val date = binding.etDate.text.toString().trim()
             val ba = binding.etBA.text.toString().trim()
             val region = binding.spRegion.selectedItem.toString()
             val product = binding.spProduct.selectedItem.toString()
 
-            val quantity = binding.etQuantity.text
-                .toString()
+            val quantity = binding.etQuantity.text.toString()
                 .toIntOrNull() ?: 0
 
-            val price = binding.etPrice.text
-                .toString()
+            val price = binding.etPrice.text.toString()
                 .toLongOrNull() ?: 0L
 
-            // Memastikan data sudah diisi
+            // Validasi
             if (
                 date.isBlank() ||
                 ba.isBlank() ||
@@ -149,8 +145,54 @@ class InputSalesActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val subtotal = quantity * price
+            // Cegah overflow perhitungan
+            val subtotal = try {
+                Math.multiplyExact(quantity.toLong(), price)
+            } catch (e: ArithmeticException) {
+                Toast.makeText(
+                    this,
+                    "Total penjualan terlalu besar",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
 
+            val category = when (product) {
+                "Serum", "Sunscreen", "Toner" -> "Skincare"
+                "Handbody" -> "Bodycare"
+                "Lipstick" -> "Makeup"
+                "Conditioner" -> "Haircare"
+                else -> "Lainnya"
+            }
+
+            // Simpan transaksi terlebih dahulu
+            val saved = saveTransaction(
+                date,
+                ba,
+                region,
+                product,
+                category,
+                quantity,
+                price,
+                subtotal
+            )
+
+            if (!saved) {
+                Toast.makeText(
+                    this,
+                    "Gagal menyimpan transaksi",
+                    Toast.LENGTH_LONG
+                ).show()
+                return@setOnClickListener
+            }
+
+            Toast.makeText(
+                this,
+                "Penjualan berhasil disimpan",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            // Kirim data ke halaman Detail
             val detailIntent = Intent(
                 this,
                 DetailSalesActivity::class.java
@@ -166,44 +208,54 @@ class InputSalesActivity : AppCompatActivity() {
 
             startActivity(detailIntent)
         }
+    }
 
-        // Navigasi Home / Dashboard
-        binding.navHome.setOnClickListener {
-            val homeIntent = Intent(
-                this,
-                DashboardActivity::class.java
-            ).apply {
-                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                        Intent.FLAG_ACTIVITY_SINGLE_TOP
+    // Menyimpan transaksi ke SharedPreferences
+    private fun saveTransaction(
+        date: String,
+        ba: String,
+        region: String,
+        product: String,
+        category: String,
+        quantity: Int,
+        price: Long,
+        subtotal: Long
+    ): Boolean {
+
+        return try {
+            val preferences = getSharedPreferences(
+                "sales_data",
+                MODE_PRIVATE
+            )
+
+            val oldData = preferences.getString(
+                "transactions",
+                "[]"
+            )
+
+            val transactions = JSONArray(oldData)
+
+            val transaction = JSONObject().apply {
+                put("date", date)
+                put("ba", ba)
+                put("region", region)
+                put("product", product)
+                put("category", category)
+                put("quantity", quantity)
+                put("price", price)
+                put("subtotal", subtotal)
             }
 
-            startActivity(homeIntent)
-        }
+            transactions.put(transaction)
 
-        // Navigasi Sales
-        binding.navSales.setOnClickListener {
-            startActivity(
-                Intent(this, SalesActivity::class.java)
-            )
-        }
+            // commit memastikan hasil penyimpanan diketahui
+            preferences.edit()
+                .putString("transactions", transactions.toString())
+                .commit()
 
-        // Navigasi Input: tetap di halaman ini
-        binding.navInput.setOnClickListener {
-            // Tidak perlu berpindah halaman
-        }
-
-        // Navigasi Detail
-        binding.navDetail.setOnClickListener {
-            startActivity(
-                Intent(this, DetailSalesActivity::class.java)
-            )
-        }
-
-        // Navigasi Profile
-        binding.navProfile.setOnClickListener {
-            startActivity(
-                Intent(this, ProfileActivity::class.java)
-            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
         }
     }
 }
