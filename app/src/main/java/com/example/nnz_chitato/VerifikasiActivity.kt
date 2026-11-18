@@ -1,8 +1,8 @@
+
 package com.example.nnz_chitato
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nnz_chitato.databinding.ActivityVerifikasiBinding
@@ -17,78 +17,56 @@ class VerifikasiActivity : AppCompatActivity() {
         binding = ActivityVerifikasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        tampilkanData()
+        tampilkanDataRegistrasi()
 
-        // Tombol Kembali ke halamabinding.btnSubmit.setOnClickListener {n registrasi
         binding.btnKembali.setOnClickListener {
             finish()
         }
 
-        // Tombol Submit menuju Dashboard
         binding.btnSubmit.setOnClickListener {
             validasiData()
         }
     }
 
-    private fun tampilkanData() {
+    private fun tampilkanDataRegistrasi() {
         val pref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        binding.txtNama.text =
-            pref.getString("nama", "").orEmpty()
-
-        binding.txtEmail.text =
-            pref.getString("email", "").orEmpty()
-
+        binding.txtNama.text = pref.getString("nama", "-") ?: "-"
+        binding.txtEmail.text = pref.getString("email", "-") ?: "-"
         binding.txtTanggalLahir.text =
-            pref.getString("tanggalLahir", "").orEmpty()
-
+            pref.getString("tanggalLahir", "-") ?: "-"
         binding.txtJenisKelamin.text =
-            pref.getString("jenisKelamin", "").orEmpty()
-
+            pref.getString("jenisKelamin", "-") ?: "-"
         binding.txtUsername.text =
-            pref.getString("username", "").orEmpty()
-
+            pref.getString("username", "-") ?: "-"
         binding.txtPassword.text =
-            pref.getString("password", "").orEmpty()
-
+            pref.getString("password", "-") ?: ""
         binding.txtConfirmPassword.text =
-            pref.getString("confirmPassword", "").orEmpty()
+            pref.getString("confirmPassword", "-") ?: ""
     }
 
     private fun validasiData() {
         val pref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        val nama = pref.getString("nama", "").orEmpty()
-        val email = pref.getString("email", "").orEmpty()
-        val tanggalLahir =
-            pref.getString("tanggalLahir", "").orEmpty()
-        val jenisKelamin =
-            pref.getString("jenisKelamin", "").orEmpty()
-        val username = pref.getString("username", "").orEmpty()
-        val password = pref.getString("password", "").orEmpty()
+        val nama = pref.getString("nama", "") ?: ""
+        val email = pref.getString("email", "") ?: ""
+        val username = pref.getString("username", "") ?: ""
+        val password = pref.getString("password", "") ?: ""
         val confirmPassword =
-            pref.getString("confirmPassword", "").orEmpty()
+            pref.getString("confirmPassword", "") ?: ""
 
-        // Periksa kelengkapan data
-        if (
-            nama.isBlank() ||
-            email.isBlank() ||
-            tanggalLahir.isBlank() ||
-            jenisKelamin.isBlank() ||
-            username.isBlank() ||
-            password.isBlank() ||
-            confirmPassword.isBlank()
+        if (nama.isBlank() || email.isBlank() ||
+            username.isBlank() || password.isBlank()
         ) {
             Toast.makeText(
                 this,
-                "Data belum lengkap. Silakan kembali ke registrasi.",
-                Toast.LENGTH_LONG
+                "Data registrasi belum lengkap",
+                Toast.LENGTH_SHORT
             ).show()
             return
         }
 
-        // Periksa format email
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(
                 this,
                 "Format email tidak valid",
@@ -97,35 +75,41 @@ class VerifikasiActivity : AppCompatActivity() {
             return
         }
 
-        // Periksa kesesuaian password
         if (password != confirmPassword) {
             Toast.makeText(
                 this,
-                "Password dan konfirmasi tidak sama",
+                "Password dan konfirmasi password tidak sama",
                 Toast.LENGTH_SHORT
             ).show()
             return
         }
 
-        // Registrasi berhasil
-        pref.edit()
+        val berhasil = pref.edit()
             .putBoolean("registrasiBerhasil", true)
-            .putBoolean("isLogin", true)
+            .putBoolean("isLogin", false)
             .putString("username", username)
-            .apply()
+            .putString("nama", nama)
+            .putString("email", email)
+            .commit()
+
+        if (!berhasil) {
+            Toast.makeText(
+                this,
+                "Data gagal disimpan",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
 
         Toast.makeText(
             this,
-            "Registrasi berhasil!",
+            "Registrasi berhasil! Silakan login.",
             Toast.LENGTH_SHORT
         ).show()
 
-        // Pindah ke Dashboard dan hapus halaman sebelumnya dari back stack
-        val intent = Intent(this, DashboardActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
-
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
     }

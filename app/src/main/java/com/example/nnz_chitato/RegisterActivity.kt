@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.nnz_chitato.databinding.ActivityRegisterBinding
 import java.util.Calendar
 import java.util.Locale
+
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
@@ -19,16 +20,18 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tampilkan kembali data jika sebelumnya sudah disimpan
-        tampilkanDataTersimpan()
+        // Form registrasi selalu kosong saat dibuka
+        kosongkanFormRegistrasi()
 
         // DatePicker untuk tanggal lahir
         binding.edtTanggalLahir.setOnClickListener {
+
             val calendar = Calendar.getInstance()
 
             DatePickerDialog(
                 this,
                 { _, year, month, day ->
+
                     binding.edtTanggalLahir.setText(
                         String.format(
                             Locale.getDefault(),
@@ -53,30 +56,21 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun tampilkanDataTersimpan() {
-        val pref = getSharedPreferences("user_pref", MODE_PRIVATE)
+    // Mengosongkan formulir tanpa menghapus data akun lama
+    private fun kosongkanFormRegistrasi() {
 
-        binding.edtNama.setText(pref.getString("nama", ""))
-        binding.edtEmail.setText(pref.getString("email", ""))
-        binding.edtTanggalLahir.setText(
-            pref.getString("tanggalLahir", "")
-        )
-        binding.edtUsername.setText(pref.getString("username", ""))
-        binding.edtPassword.setText(pref.getString("password", ""))
-        binding.edtConfirmPassword.setText(
-            pref.getString("confirmPassword", "")
-        )
+        binding.edtNama.text?.clear()
+        binding.edtEmail.text?.clear()
+        binding.edtTanggalLahir.text?.clear()
+        binding.edtUsername.text?.clear()
+        binding.edtPassword.text?.clear()
+        binding.edtConfirmPassword.text?.clear()
 
-        when (pref.getString("jenisKelamin", "")) {
-            "Laki-laki" ->
-                binding.rgJenisKelamin.check(R.id.rbLakiLaki)
-
-            "Perempuan" ->
-                binding.rgJenisKelamin.check(R.id.rbPerempuan)
-        }
+        binding.rgJenisKelamin.clearCheck()
     }
 
     private fun simpanDanLanjutkan() {
+
         val nama = binding.edtNama.text.toString().trim()
         val email = binding.edtEmail.text.toString().trim()
         val tanggalLahir =
@@ -94,7 +88,7 @@ class RegisterActivity : AppCompatActivity() {
             else -> ""
         }
 
-        // Validasi semua input wajib diisi
+        // Validasi semua input
         if (
             nama.isBlank() ||
             email.isBlank() ||
@@ -112,7 +106,7 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        // Validasi format email
+        // Validasi email
         if (!android.util.Patterns.EMAIL_ADDRESS
                 .matcher(email).matches()
         ) {
@@ -121,7 +115,7 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        // Validasi kesamaan password
+        // Validasi password
         if (password != confirmPassword) {
             binding.edtConfirmPassword.error =
                 "Password dan konfirmasi tidak sama"
@@ -129,13 +123,13 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        // Simpan seluruh data registrasi
+        // Simpan data registrasi
         val sharedPref = getSharedPreferences(
             "user_pref",
             MODE_PRIVATE
         )
 
-        sharedPref.edit()
+        val berhasil = sharedPref.edit()
             .putString("nama", nama)
             .putString("email", email)
             .putString("tanggalLahir", tanggalLahir)
@@ -144,13 +138,21 @@ class RegisterActivity : AppCompatActivity() {
             .putString("password", password)
             .putString("confirmPassword", confirmPassword)
             .putBoolean("registrasiBerhasil", false)
-            .apply()
+            .putBoolean("isLogin", false)
+            .commit()
+
+        if (!berhasil) {
+            Toast.makeText(
+                this,
+                "Data registrasi gagal disimpan",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
 
         // Buka halaman verifikasi
-        val intent = Intent(
-            this,
-            VerifikasiActivity::class.java
+        startActivity(
+            Intent(this, VerifikasiActivity::class.java)
         )
-        startActivity(intent)
     }
 }
