@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.NNZ_Chitato" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#90AFFF</item>
-        <item name="colorSecondary">#90AFFF</item>
-        <item name="android:statusBarColor">#121826</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">#121826</item>
-        <item name="android:windowLightNavigationBar">false</item>
-        <item name="android:windowBackground">#121826</item>
-    </style>
+    <color name="background_blue">#121826</color>
+    <color name="primary_blue">#90AFFF</color>
+    <color name="border_blue">#344563</color>
+    <color name="white">#283348</color>
+    <color name="text_dark">#F1F5F9</color>
+    <color name="text_gray">#AAB4C5</color>
+    <color name="logout_red">#E35D68</color>
+    <color name="chart_purple">#BB86FC</color>
+    <color name="chart_pink">#F48FB1</color>
+    <color name="bg_light">#121826</color>
+    <color name="card_bg">#283348</color>
+    <color name="text_primary">#F1F5F9</color>
+    <color name="text_secondary">#AAB4C5</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="chitato_cream">#283348</color>
+    <color name="chitato_yellow_light">#66552A</color>
+    <color name="divider">#3A465B</color>
+    <color name="chitato_red">#EF5350</color>
+    <color name="chitato_red_dark">#C62828</color>
+    <color name="chitato_yellow">#FFC928</color>
 </resources>

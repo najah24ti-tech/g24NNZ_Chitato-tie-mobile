@@ -43,49 +43,6 @@ class ProfileActivity : AppCompatActivity() {
             // Tema akan diterapkan dan Activity biasanya dibuat ulang
         }
 
-        // Navigasi Dashboard
-        binding.navHome.setOnClickListener {
-            val intent = Intent(
-                this,
-                DashboardActivity::class.java
-            )
-
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                    Intent.FLAG_ACTIVITY_SINGLE_TOP
-
-            startActivity(intent)
-            finish()
-        }
-
-        // Navigasi Sales
-        binding.navSales.setOnClickListener {
-            startActivity(
-                Intent(this, SalesActivity::class.java)
-            )
-            finish()
-        }
-
-        // Navigasi Input
-        binding.navInput.setOnClickListener {
-            startActivity(
-                Intent(this, InputSalesActivity::class.java)
-            )
-            finish()
-        }
-
-        // Navigasi Detail
-        binding.navDetail.setOnClickListener {
-            startActivity(
-                Intent(this, DetailSalesActivity::class.java)
-            )
-            finish()
-        }
-
-        // Navigasi Profile
-        binding.navProfile.setOnClickListener {
-            // Tetap berada di halaman Profile
-        }
-
         // Tombol Edit Profile
         binding.btnEditProfile.setOnClickListener {
             Toast.makeText(

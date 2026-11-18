@@ -1,4 +1,3 @@
-
 package com.example.nnz_chitato
 
 import android.content.Context
@@ -18,13 +17,13 @@ object ThemeManager {
     }
 
     fun applySavedTheme(context: Context) {
-        AppCompatDelegate.setDefaultNightMode(
-            if (isDarkMode(context)) {
-                AppCompatDelegate.MODE_NIGHT_YES
-            } else {
-                AppCompatDelegate.MODE_NIGHT_NO
-            }
-        )
+        val mode = if (isDarkMode(context)) {
+            AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            AppCompatDelegate.MODE_NIGHT_NO
+        }
+
+        AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     fun toggleTheme(context: Context) {
@@ -37,12 +36,6 @@ object ThemeManager {
             .putBoolean(KEY_DARK_MODE, newMode)
             .apply()
 
-        AppCompatDelegate.setDefaultNightMode(
-            if (newMode) {
-                AppCompatDelegate.MODE_NIGHT_YES
-            } else {
-                AppCompatDelegate.MODE_NIGHT_NO
-            }
-        )
+        applySavedTheme(context)
     }
 }
