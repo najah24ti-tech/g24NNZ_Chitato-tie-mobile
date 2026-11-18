@@ -23,7 +23,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(
-            inflater, container, false
+            inflater,
+            container,
+            false
         )
         return binding.root
     }
@@ -35,54 +37,92 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        (requireActivity() as AppCompatActivity)
-            .setSupportActionBar(binding.toolbar)
-
-        (requireActivity() as AppCompatActivity)
-            .supportActionBar?.title = "Home"
+        val activity = requireActivity() as AppCompatActivity
+        activity.setSupportActionBar(binding.toolbar)
+        activity.supportActionBar?.title = "Home"
 
         // Username
-        val sharedPref = requireContext()
-            .getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+        val sharedPref = requireContext().getSharedPreferences(
+            "user_pref",
+            Context.MODE_PRIVATE
+        )
 
         val username = sharedPref.getString(
-            "username", "Pengguna"
+            "username",
+            "Pengguna"
         ) ?: "Pengguna"
 
         binding.txtWelcome.text = "Hi, $username!"
 
         // Spinner bulan
         val months = listOf(
-            "Januari", "Februari", "Maret", "April",
-            "Mei", "Juni", "Juli", "Agustus",
-            "September", "Oktober", "November", "Desember"
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember"
         )
 
-        val adapter = ArrayAdapter(
+        val spinnerAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_spinner_item,
             months
         )
 
-        adapter.setDropDownViewResource(
+        spinnerAdapter.setDropDownViewResource(
             android.R.layout.simple_spinner_dropdown_item
         )
 
-        binding.spinnerMonth.adapter = adapter
+        binding.spinnerMonth.adapter = spinnerAdapter
 
-        // Buka halaman Sales
-        binding.btnSales.setOnClickListener {
-            startActivity(
-                Intent(requireContext(), SalesActivity::class.java)
-            )
+        // Quick Menu
+        val menuList = listOf(
+            HomeMenu("Input Penjualan", "📝"),
+            HomeMenu("Detail Penjualan", "📊")
+        )
+
+        // CustomAdapter
+        val menuAdapter = HomeMenuAdapter(
+            requireContext(),
+            menuList
+        )
+
+        binding.gridHomeMenu.adapter = menuAdapter
+
+        // Klik Quick Menu
+        binding.gridHomeMenu.setOnItemClickListener {
+                _, _, position, _ ->
+
+            when (position) {
+                0 -> {
+                    startActivity(
+                        Intent(
+                            requireContext(),
+                            InputSalesActivity::class.java
+                        )
+                    )
+                }
+
+                1 -> {
+                    startActivity(
+                        Intent(
+                            requireContext(),
+                            DetailSalesActivity::class.java
+                        )
+                    )
+                }
+            }
         }
 
-        // Buka halaman Profile
-        binding.btnProfile.setOnClickListener {
-            startActivity(
-                Intent(requireContext(), ProfileActivity::class.java)
-            )
-        }
+        // Grafik dibuat oleh SalesChartView
+        // Tidak memerlukan pemanggilan binding tambahan.
     }
 
     override fun onDestroyView() {
