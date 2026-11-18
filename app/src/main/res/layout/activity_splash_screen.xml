@@ -7,24 +7,26 @@
     android:padding="24dp"
     android:background="@color/background_blue">
 
+    <!-- Logo -->
     <ImageView
         android:id="@+id/imgSplashLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/logo"
         android:contentDescription="Logo HebePku Mobile"
         android:scaleType="fitCenter"
+        android:src="@drawable/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/txtSplashTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <!-- Judul -->
     <TextView
         android:id="@+id/txtSplashTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="HebePku Mobile"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -34,9 +36,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Subtitle -->
     <TextView
         android:id="@+id/txtSplashSubtitle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Sistem Analisis dan Manajemen Penjualan"
